@@ -12,7 +12,7 @@ export default function Badge({ type, children }) {
             break;
     }
     return (
-        <div className={`p-1.5 rounded-md text-xs ${badgeStyle} inline-block whitespace-nowrap`}>
+        <div className={`p-1.5 rounded-md text-xs ${badgeStyle} inline-block whitespace-nowrap font-bold`}>
             {children}
         </div>
     );
