@@ -2,11 +2,38 @@ import { useParams } from "react-router"
 import Badge from "../components/Badge"
 import useFetch from "../hooks/useFetch"
 import Loading from "../components/Loading"
+import { useEffect, useState } from "react"
 
 export default function TaskDetailsPage() {
     const { id } = useParams()
     const url = `https://jsonplaceholder.typicode.com/todos/${id}`
     const { data: task, loading, error } = useFetch(url)
+    const [completed, setCompleted] = useState(false)
+
+    useEffect(() => {
+        if(!task) return
+        let completed = false;
+        const statusObj = localStorage.getItem("status");
+        const statusMap = statusObj ? JSON.parse(statusObj) : {};
+        if(statusMap[task.id]) completed = statusMap[task.id] === "completed"
+        else completed = task.completed
+        setCompleted(completed)
+    })
+
+    const handleChangeTaskStatus = () => {
+        const statusMapObj = localStorage.getItem("status");
+        const statusMap = statusMapObj ? JSON.parse(statusMapObj) : {}
+        if(completed) {
+            statusMap[task.id] = "pending";
+            localStorage.setItem("status", JSON.stringify(statusMap))
+            setCompleted(false)
+        } else {
+            statusMap[task.id] = "completed"
+            localStorage.setItem("status", JSON.stringify(statusMap))
+            setCompleted(true)
+        }
+    }
+
 
     
     if (loading) {
@@ -27,10 +54,10 @@ export default function TaskDetailsPage() {
             </div>
             <p className="text-3xl max-w-[600px]">{task.title}</p>
             {
-                task.completed ?
-                    <Badge type="success">Done</Badge>
+               completed ?
+                    <Badge onClick={handleChangeTaskStatus} type="success">Done</Badge>
                     :
-                    <Badge type="error">Not Completed</Badge>
+                    <Badge onClick={handleChangeTaskStatus} type="error">Not Completed</Badge>
             }
         </div>
     </main>

@@ -1,17 +1,38 @@
 import { Link } from "react-router";
 import Badge from "./Badge";
+import { useState } from "react";
 
 export default function Task({ data }) {
-    const isCompleted = data.completed || false;
+    const [completed, setCompleted] = useState(() => {
+        const statusObj = localStorage.getItem("status");
+        const statusMap = statusObj ? JSON.parse(statusObj) : {};
+        if(statusMap[data.id]) return statusMap[data.id] === "completed"
+        else return data.completed
+    })
+
+    const handleChangeTaskStatus = () => {
+        const statusMapObj = localStorage.getItem("status");
+        const statusMap = statusMapObj ? JSON.parse(statusMapObj) : {}
+        if(completed) {
+            statusMap[data.id] = "pending";
+            localStorage.setItem("status", JSON.stringify(statusMap))
+            setCompleted(false)
+        } else {
+            statusMap[data.id] = "completed"
+            localStorage.setItem("status", JSON.stringify(statusMap))
+            setCompleted(true)
+        }
+    }
+
     return (
         <div className="p-3 bg-dim border border-border hover:border-secondary flex flex-col gap-7">
                 <p className="max-w-[250px]">{data.title}</p>
                 <div className="grow flex flex-row justify-between items-end">
                     {
-                        isCompleted ?
-                            <Badge type="success">Done</Badge>
+                        completed ?
+                            <Badge onClick={handleChangeTaskStatus} type="success">Done</Badge>
                             :
-                            <Badge type="error">Not Completed</Badge>
+                            <Badge onClick={handleChangeTaskStatus} type="error">Not Completed</Badge>
                     }
                 <Link  to={`/tasks/${data.id}`}  className="self-end gap-2 items-center p-1 inline-flex">
                     <p className="text-secondary">Details</p>
