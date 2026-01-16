@@ -3,22 +3,28 @@ import Task from "../components/Task"
 import Pagination from "../components/Pagination"
 import Search from "../components/Search"
 import TaskList from "../components/TaskList"
+import useFetch from "../hooks/useFetch"
+import Loading from "../components/Loading"
 
 export default function TaskListPage() {
-    const [tasks, setTasks] = useState([])
     const [page, setPage] = useState(0)
     
-    useEffect(() => {
-        const fetchTasks = async () => {
-            const url = `https://jsonplaceholder.typicode.com/todos?_start=${20*page}&_limit=20`
-            const res = await fetch(url);
-            const tasks = await res.json();
-            setTasks(tasks)
-        }
-        fetchTasks()
-    }, [page])
+    const url = `https://jsonplaceholder.typicode.com/todos?_start=${20*page}&_limit=20`
 
-    return <main className="h-full min-h-screen bg-background ">
+    const {data: tasks, loading, error} = useFetch(url, {}, [page])
+
+    if (loading) {
+        return <div className="h-full min-h-screen bg-background flex items-center justify-center">
+            <Loading />
+        </div>
+    }
+    
+    if (error) {
+        return <div className="h-full min-h-screen bg-background flex items-center justify-center">Cannot fetch tasks.<br/>Something went wrong.</div>
+    }
+
+
+    return <main className="h-full min-h-screen bg-background">
         <div className="max-w-[1000px] w-full mx-auto p-2">
             <TaskList data={tasks}/>
             <Pagination totalPages={200/20 - 1} setPage={setPage}/>
