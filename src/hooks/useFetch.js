@@ -27,7 +27,7 @@ const useFetch = (url, options = {}, dependencies = []) => {
         };
 
         fetchData();
-    }, [...dependencies]); // rerun when URL or dependencies change
+    }, [...dependencies]); // rerun when dependencies change
 
     return { data, loading, error };
 };

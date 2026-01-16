@@ -1,39 +1,13 @@
 import { useState } from "react";
 
-export default function Pagination({ totalPages = 1, setPage }) {
-    const [currPage, setCurrPage] = useState(0)
+export default function Pagination({ totalPages = 1, setPage, currPage }) {
 
-    const pageNext = () => {
-        if(currPage < totalPages) {
-            setPage(currPage + 1)
-            setCurrPage(currPage + 1)
-        }
-        return
-    }
 
-    const pagePrev = () => {
-        if(currPage > 0) {
-            setPage(currPage - 1)
-            setCurrPage(currPage - 1)
-        }
-        return
-    }
+    const pageNext = () => (currPage < totalPages) && setPage(currPage + 1)
+    const pagePrev = () => (currPage > 0) && setPage(currPage - 1)
+    const pageEnd = () => (currPage < totalPages) && setPage(totalPages)
+    const pageStart = () => (currPage > 0) && setPage(0)
 
-    const pageEnd = () => {
-        if(currPage < totalPages) {
-            setPage(totalPages)
-            setCurrPage(totalPages)
-        }
-        return
-    }
-
-    const pageStart = () => {
-        if(currPage > 0) {
-            setPage(0)
-            setCurrPage(0)
-        }
-        return
-    }
 
     return (
         <div className="flex justify-between gap-3">

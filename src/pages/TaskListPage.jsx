@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react"
-import Task from "../components/Task"
+import { useState } from "react"
 import Pagination from "../components/Pagination"
-import Search from "../components/Search"
 import TaskList from "../components/TaskList"
 import useFetch from "../hooks/useFetch"
 import Loading from "../components/Loading"
@@ -27,7 +25,7 @@ export default function TaskListPage() {
     return <main className="h-full min-h-screen bg-background">
         <div className="max-w-[1000px] w-full mx-auto p-2">
             <TaskList data={tasks}/>
-            <Pagination totalPages={200/20 - 1} setPage={setPage}/>
+            <Pagination currPage={page} totalPages={200/20 - 1} setPage={setPage}/>
         </div>
     </main>
 }
