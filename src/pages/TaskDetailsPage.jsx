@@ -16,7 +16,7 @@ export default function TaskDetailsPage() {
     }
 
     if (error) {
-        return <div className="h-full min-h-screen bg-background flex items-center justify-center">Something went wrong.</div>
+        return <div className="h-full min-h-screen bg-background flex items-center justify-center">No task with this id.<br/>Try with different id.</div>
     }
 
     return <main className="flex justify-center items-center bg-background h-full min-h-screen">
@@ -28,7 +28,7 @@ export default function TaskDetailsPage() {
             <p className="text-3xl max-w-[600px]">{task.title}</p>
             {
                 task.completed ?
-                    <Badge type="success">Completed</Badge>
+                    <Badge type="success">Done</Badge>
                     :
                     <Badge type="error">Not Completed</Badge>
             }

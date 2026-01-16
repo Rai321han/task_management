@@ -2,12 +2,12 @@ export default function Badge({ type, children }) {
     let badgeStyle = ""
     switch (type) {
         case "success":
-            badgeStyle = "bg-secondary"
+            badgeStyle = "bg-success-fill border border-success"
             break;
         case "error":
-            badgeStyle = "bg-error"
+            badgeStyle = "bg-error-fill border border-error"
         case "danger":
-            badgeStyle = "bg-danger"
+            badgeStyle = "bg-danger-fill border border-danger"
         default:
             break;
     }

@@ -23,7 +23,7 @@ export default function TaskList({data}) {
     return (
         <>
         <Search value={searchText} onChange={setSearchText}/>
-        <div className="mt-5 flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-5 h-[80vh] overflow-auto pr-2
+        <div className="mt-5 flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 auto-rows-min gap-2 mb-5 h-[80vh] overflow-auto pr-2
                             
                             [&::-webkit-scrollbar]:w-2
                             [&::-webkit-scrollbar-track]:bg-gray-100
