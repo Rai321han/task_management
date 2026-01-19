@@ -18,7 +18,7 @@ The Task Management App allows users to:
 
 This project was built as part of a **React assignment**.
 
-![Task Management App Screenshot](./task-management-ss.webp)
+![Task Management App Screenshot](task-management-ss.webp)
 
 ---
 
