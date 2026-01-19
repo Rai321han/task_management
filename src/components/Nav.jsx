@@ -29,11 +29,15 @@ export default function Nav() {
                     </p>
                 </Link>
                 <div className="flex gap-3 items-center">
-                    <NavLink to="/tasks" className="px-5 py-2 border-b-2 border-b-secondary">All tasks</NavLink>
+                    <NavLink to="/tasks" end className={({ isActive }) =>
+                        `px-5 py-2 border-b-2 ${
+                        isActive ? "border-b-secondary" : "border-b-red"
+                        }`
+                    }>All tasks</NavLink>
                     {
                         theme ===  "dark" ? 
                     
-                    <div onClick={toggleTheme}>
+                    <div onClick={toggleTheme} className="cursor-pointer">
                         <svg width="30px" fill="#ffffff" height="30px" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-5.0 -10.0 110.0 135.0">
                         <path d="m74.723 44.176c3.2148 13.625-5.2188 27.273-18.844 30.488-13.621 3.2188-27.273-5.2188-30.488-18.84-3.2148-13.625 5.2227-27.273 18.844-30.488 13.621-3.2188 27.273 5.2188 30.488 18.84z"/>
                         <path d="m48.129 17.609c0.15234 0.91406 0.94141 1.5898 1.8711 1.5898s1.7188-0.67188 1.8711-1.5898l1.4375-8.7109c0.33594-2.043-1.2383-3.8984-3.3086-3.8984s-3.6445 1.8555-3.3086 3.8984z"/>
@@ -47,7 +51,7 @@ export default function Nav() {
                         </svg>
                     </div>
                     :
-                    <div onClick={toggleTheme}>
+                    <div onClick={toggleTheme} className="cursor-pointer">
                         <svg width="30px" fill="#000000" height="30px" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-5.0 -10.0 110.0 135.0">
                         <path d="m98.941 56.801c-1.9375 11.762-8.0352 22.121-16.727 29.512-8.6016 7.3125-19.738 11.727-31.91 11.727-13.613 0-25.941-5.5195-34.863-14.441s-14.438-21.25-14.438-34.863c0-10.664 3.3945-20.543 9.1602-28.617 5.9219-8.2891 14.348-14.672 24.172-18.035 1.1992-0.40625 2.5 0.23828 2.9062 1.4336 0.24219 0.71875 0.10937 1.4688-0.28906 2.0469-1.8867 3-3.3711 6.2773-4.3789 9.7461-0.97656 3.375-1.5 6.9648-1.5 10.695 0 10.609 4.3008 20.215 11.254 27.168 6.9492 6.9531 16.559 11.254 27.168 11.254 4.8477 0 9.4844-0.89844 13.75-2.5312 4.4297-1.6992 8.4648-4.1953 11.93-7.3086 0.94141-0.84766 2.3906-0.76953 3.2383 0.17187 0.51953 0.57813 0.69141 1.3438 0.53125 2.0508z"/>
                         </svg>
