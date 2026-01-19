@@ -47,6 +47,13 @@ export default function TaskDetailsPage() {
         return <div className="h-full min-h-screen bg-background flex items-center justify-center">No task with this id.<br/>Try with different id.</div>
     }
 
+    if (!task) {
+        return <div className="h-full min-h-screen bg-background flex items-center justify-center">
+            <Loading />
+        </div>
+    }
+
+
     return <main className="flex justify-center items-center bg-background h-full min-h-screen">
         <div className="flex flex-col items-stretch  p-5">
             <div onClick={() => navigate(-1)} className="self-start flex mb-10 gap-2 items-center text-txt opacity-50 cursor-pointer border-b border-transparent hover:border-b hover:border-secondary">
