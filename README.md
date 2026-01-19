@@ -1,16 +1,106 @@
-# React + Vite
+# Task Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **Task Management Application** built with **React** that consumes data from the **JSONPlaceholder API**.  
+This project demonstrates client-side routing, global state management, reusable components, and asynchronous data handling.
 
-Currently, two official plugins are available:
+**GitHub Repository:**  
+git@github.com:Rai321han/task_management.git
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Task Management App allows users to:
 
-## Expanding the ESLint configuration
+- View a list of tasks fetched from an external API
+- Navigate to a detailed view of a single task
+- Toggle between **Light** and **Dark** themes
+- Search and paginate tasks
+- Handle loading states and invalid routes gracefully
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project was built as part of a **React assignment**.
+
+---
+
+## Tech Stack
+
+- **React**
+- **React Router**
+- **Tailwind CSS**
+
+---
+
+## Project Folder Structure
+
+```sh
+src/
+├── components/             # Reusable UI components
+│ ├── Nav.jsx               # Navigation bar
+│ ├── Task.jsx              # Single task UI
+│ ├── TaskList.jsx          # Task list container
+│ ├── Pagination.jsx        # Pagination controls
+│ ├── Search.jsx            # Task search input
+│ ├── Badge.jsx             # Status indicator (Done / Not completed)
+│ └── Loading.jsx           # Loading spinner
+│
+├── pages/                  # Route-based pages
+│ ├── HomePage.jsx          # Welcome / landing page
+│ ├── TaskListPage.jsx      # Displays tasks list
+│ ├── TaskDetailsPage.jsx   # Single task details
+│ └── NotFoundPage.jsx      # 404 page
+│
+├── hooks/                  # Custom React hooks
+│ ├── useFetch.js           # Custom data fetching hook
+│ └── useDebounce.js        # Debounced text logic
+│
+├── context/                # Global state management
+│ └── ThemeContext.jsx      # Light/Dark mode provider
+│
+├── assets/                 # Static assets (icons, images)
+│
+├── App.jsx                 # App layout and routes
+├── main.jsx                # React entry point
+└── index.css               # Global styles
+```
+
+## Data Fetching
+
+Data is fetched from **JSONPlaceholder API** using a custom hook:
+
+- Task List:  
+  `https://jsonplaceholder.typicode.com/todos?_limit=20`
+
+- Task Details:  
+  `https://jsonplaceholder.typicode.com/todos/:id`
+
+Loading states are handled using conditional rendering.
+
+---
+
+## Features
+
+- Task list fetched from API
+- Search tasks by title
+- Pagination support
+- Light / Dark mode toggle
+- Loading indicators
+- Custom 404 page
+- Reusable components & hooks
+
+---
+
+## How to Run the Project Locally
+
+```bash
+# Clone the repository
+git clone git@github.com:Rai321han/task_management.git
+
+# Navigate to the project directory
+cd task_management
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
