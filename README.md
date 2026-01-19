@@ -3,9 +3,6 @@
 A simple **Task Management Application** built with **React** that consumes data from the **JSONPlaceholder API**.  
 This project demonstrates client-side routing, global state management, reusable components, and asynchronous data handling.
 
-**GitHub Repository:**  
-git@github.com:Rai321han/task_management.git
-
 ---
 
 ## Project Overview
@@ -14,11 +11,14 @@ The Task Management App allows users to:
 
 - View a list of tasks fetched from an external API
 - Navigate to a detailed view of a single task
+- Change task status which will be saved on localstorage
 - Toggle between **Light** and **Dark** themes
 - Search and paginate tasks
 - Handle loading states and invalid routes gracefully
 
 This project was built as part of a **React assignment**.
+
+![Task Management App Screenshot](./task-management-ss.webp)
 
 ---
 
@@ -81,6 +81,7 @@ Loading states are handled using conditional rendering.
 
 - Task list fetched from API
 - Search tasks by title
+- Change task status
 - Pagination support
 - Light / Dark mode toggle
 - Loading indicators
