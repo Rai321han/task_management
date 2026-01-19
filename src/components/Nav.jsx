@@ -20,7 +20,7 @@ export default function Nav() {
      return (
         <>
             <nav className="bg-background p-7 flex justify-between">
-                <Link to={"/tasks"} className="flex gap-2 items-center">
+                <Link to={"/"} className="flex gap-2 items-center">
                     <img alt="logo" src="/task-icon.png" className="w-10 h-10" />
                     <p>Task
                         <span className="font-bold">
