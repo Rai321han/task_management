@@ -48,17 +48,26 @@ export default function TaskDetailsPage() {
 
     return <main className="flex justify-center items-center bg-background h-full min-h-screen">
         <div className="flex flex-col gap-2 items-start p-5">
-            <div className="flex gap-2">
-            <p className="opacity-50">Task ID: #{task.id}</p>
-            <p className="opacity-50">User ID: #{task.userId}</p>
+            <div className="flex gap-2 justify-between w-full">
+                <p className="opacity-50">Task ID: #{task.id}</p>
+                <p className="opacity-50">User ID: #{task.userId}</p>
             </div>
             <p className="text-3xl max-w-[600px]">{task.title}</p>
+            <div className="flex gap-2">
+                <p className="opacity-50">Status: </p> 
+                {completed ? 
+                    <span className="text-success font-bold">Done</span> : 
+                    <span className="text-danger font-bold">Not completed</span>    
+                }
+            </div>
+            <div className="mt-5">
             {
-               completed ?
-                    <Badge onClick={handleChangeTaskStatus} type="success">Done</Badge>
-                    :
-                    <Badge onClick={handleChangeTaskStatus} type="error">Not Completed</Badge>
+                completed ?
+                <Badge onClick={handleChangeTaskStatus} type="error">Mark as incomplete</Badge>
+                :
+                <Badge onClick={handleChangeTaskStatus} type="success">Mark as done</Badge>
             }
+            </div>  
         </div>
     </main>
 }
