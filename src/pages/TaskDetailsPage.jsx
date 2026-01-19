@@ -3,11 +3,12 @@ import Badge from "../components/Badge"
 import useFetch from "../hooks/useFetch"
 import Loading from "../components/Loading"
 import { useEffect, useState } from "react"
+import ErrorMessage from "../components/ErrorMessage"
 
 export default function TaskDetailsPage() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const url = `https://jsonplaceholder.typicode.com/todos/${id}`
+    const url = `https://jsonplaceholder.typicode.com/todsos/${id}`
     const { data: task, loading, error } = useFetch(url)
     const [completed, setCompleted] = useState(false)
 
@@ -44,7 +45,7 @@ export default function TaskDetailsPage() {
     }
 
     if (error) {
-        return <div className="h-full min-h-screen bg-background flex items-center justify-center">No task with this id.<br/>Try with different id.</div>
+        return <ErrorMessage message={"Error fetching task. Please try again later."} />
     }
 
     if (!task) {
