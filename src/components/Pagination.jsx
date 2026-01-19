@@ -11,7 +11,7 @@ export default function Pagination({ totalPages = 1, setPage, currPage }) {
 
     return (
         <div className="flex justify-between gap-3">
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
                 <div onClick={pageStart} className={`hover:border-b hover:border-secondary border-offset-2 ${currPage === 0 && "opacity-50"}`}>
                    <svg className="text-txt" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
  <path d="M18 17L13 12L18 7M11 17L6 12L11 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -31,6 +31,19 @@ export default function Pagination({ totalPages = 1, setPage, currPage }) {
  <path d="M6 17L11 12L6 7M13 17L18 12L13 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
  </svg>
                 </div>
+            </div>
+            <div className="flex items-center gap-2">
+                <p>Go to page:</p>
+                <input className="p-2 w-15" type="number" min="1" max={totalPages + 1} value={currPage + 1} onChange={(e) => {
+                    let pageNum = Number(e.target.value) - 1
+                    if (pageNum <= 0) {
+                        setPage(0)
+                    } else if (pageNum >= totalPages) {
+                        setPage(totalPages)
+                    } else {
+                        setPage(pageNum)
+                    }
+                }} />
             </div>
         </div>
     );
