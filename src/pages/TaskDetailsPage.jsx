@@ -1,4 +1,4 @@
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import Badge from "../components/Badge"
 import useFetch from "../hooks/useFetch"
 import Loading from "../components/Loading"
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 
 export default function TaskDetailsPage() {
     const { id } = useParams()
+    const navigate = useNavigate()
     const url = `https://jsonplaceholder.typicode.com/todos/${id}`
     const { data: task, loading, error } = useFetch(url)
     const [completed, setCompleted] = useState(false)
@@ -48,6 +49,10 @@ export default function TaskDetailsPage() {
 
     return <main className="flex justify-center items-center bg-background h-full min-h-screen">
         <div className="flex flex-col gap-2 items-start p-5">
+        <div onClick={() => navigate(-1)} className="flex mb-10 gap-2 items-center text-txt opacity-50 cursor-pointer border-b border-transparent hover:border-b hover:border-secondary">
+            <svg width={24} height={24} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path className="fill-txt" d="M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z" data-name="Left"/></svg>
+            <p>Back to tasks list</p>
+        </div>
             <div className="flex gap-2 justify-between w-full">
                 <p className="opacity-50">Task ID: #{task.id}</p>
                 <p className="opacity-50">User ID: #{task.userId}</p>
