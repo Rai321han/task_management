@@ -21,7 +21,6 @@ export default function TaskListPage() {
         return <div className="h-full min-h-screen bg-background flex items-center justify-center">Cannot fetch tasks.<br/>Something went wrong.</div>
     }
 
-
     return <main className="h-full min-h-screen bg-background">
         <div className="max-w-[1000px] w-full mx-auto p-2">
             <TaskList data={tasks}/>

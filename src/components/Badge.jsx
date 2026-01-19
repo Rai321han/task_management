@@ -1,4 +1,4 @@
-export default function Badge({ type, children, ...rest }) {
+export default function Badge({ type, children, className, ...rest }) {
     let badgeStyle = ""
     switch (type) {
         case "success":
@@ -12,7 +12,7 @@ export default function Badge({ type, children, ...rest }) {
             break;
     }
     return (
-        <div {...rest} className={`p-1.5 cursor-pointer rounded-md text-xs ${badgeStyle} inline-block whitespace-nowrap font-bold`}>
+        <div {...rest} className={`p-1.5 cursor-pointer  text-xs ${badgeStyle} inline-block whitespace-nowrap font-bold ${className}`}>
             {children}
         </div>
     );

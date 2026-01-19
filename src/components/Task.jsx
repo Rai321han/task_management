@@ -26,7 +26,7 @@ export default function Task({ data }) {
 
     return (
         <div className="p-3 bg-dim border border-border hover:border-secondary flex flex-col gap-7">
-                <p className="max-w-[250px]">{data.title}</p>
+                <p className={`max-w-[250px] ${completed ? 'opacity-60' : 'opacity-100'}`}>{data.title}</p>
                 <div className="grow flex flex-row justify-between items-end">
                     {
                         completed ?
