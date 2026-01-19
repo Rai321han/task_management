@@ -8,7 +8,7 @@ import ErrorMessage from "../components/ErrorMessage"
 export default function TaskDetailsPage() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const url = `https://jsonplaceholder.typicode.com/todsos/${id}`
+    const url = `https://jsonplaceholder.typicode.com/todos/${id}`
     const { data: task, loading, error } = useFetch(url)
     const [completed, setCompleted] = useState(false)
 
@@ -45,7 +45,7 @@ export default function TaskDetailsPage() {
     }
 
     if (error) {
-        return <ErrorMessage message={"Error fetching task. Please try again later."} />
+        return <ErrorMessage message={"Error fetching tasks. Please try again later."} />
     }
 
     if (!task) {
